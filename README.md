@@ -21,11 +21,17 @@ Desenvolver modelos preditivos capazes de estimar o valor do seguro de saúde a 
 
 Previsao-seguro-saude/
 ├─ data/
+
 │ └─ raw/ <- insurance.csv
+
 ├─ notebooks/
+
 │ └─ Regressor.ipynb <- Análise, tratamento e modelagem
+
 ├─ models/ <- LIGHTGBM.pkl, Random_Forest.pkl, XGBOOST.pkl
+
 ├─ requirements.txt <- Dependências do projeto
+
 └─ README.md <- Documentação do projeto
 
 
