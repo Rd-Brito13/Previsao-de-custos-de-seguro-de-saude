@@ -88,7 +88,7 @@ Previsao-seguro-saude/
 
 ## Resultados
 
-- Melhor modelo: **Random Forest (com escalonamento + encoding)**  
+- Melhor modelo: **Random Forest (com escalonamento + encoding + criação de variaveis dummy)**  
 - Principais métricas:
   - **R²**: 85.83%  
   - **MAE**: 2.415,70  
