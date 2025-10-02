@@ -1,6 +1,6 @@
 # Projeto: Previsão de Custos de Seguro de Saúde
 
-Este projeto aplica Machine Learning (Regressão Linear e Regressão Múltipla) para prever o custo de seguros de saúde com base em variáveis demográficas e comportamentais.  
+Este projeto aplica **Machine Learning** para prever o custo de seguros de saúde com base em variáveis demográficas e comportamentais.  
 O dataset utilizado é público e está disponível no Kaggle: [Medical Cost Personal Datasets](https://www.kaggle.com/datasets/mirichoi0218/insurance)
 
 ---
@@ -18,6 +18,8 @@ Desenvolver modelos preditivos capazes de estimar o valor do seguro de saúde a 
 
 ---
 
+## Estrutura do projeto
+
 
 Previsao-seguro-saude/
 
@@ -33,6 +35,8 @@ Previsao-seguro-saude/
 
 ├─ requirements.txt <- Dependências do projeto
 
+├─ Setup.bat <- Script para criar venv, instalar dependências e kernel Jupyter
+
 └─ README.md <- Documentação do projeto
 
 
@@ -42,7 +46,7 @@ Previsao-seguro-saude/
 ## Dataset
 
 - **Fonte**: Kaggle - Medical Cost Personal Datasets  
-- **Número de instâncias**: 1338  
+- **Número de instâncias**: 1.338  
 - **Número de features**: 7 (6 independentes + 1 target)  
 - **Target**:  
   - `charges` (valor do seguro de saúde)  
@@ -58,13 +62,12 @@ Previsao-seguro-saude/
    - Análise exploratória (distribuição, outliers, correlações, valores ausentes, gráficos)  
    - Encoding de variáveis categóricas (`OneHotEncoder`, `OrdinalEncoder`)  
    - Escalonamento de variáveis numéricas  
-   - Separação de treino e teste antes do pré-processamento (evitar vazamento de dados)  
+   - Separação de treino e teste antes do pré-processamento  
 
 3. **Modelagem**  
    - Modelos testados:
-     - Regressão Linear  
-     - Regressão Múltipla  
-     - Regressão com Vetores de Suporte (SVR)  
+     - Regressão Linear e Múltipla  
+     - SVR  
      - Árvore de Decisão  
      - Random Forest  
      - XGBoost, LightGBM, CatBoost  
@@ -72,8 +75,8 @@ Previsao-seguro-saude/
    - Ajuste de hiperparâmetros com `GridSearchCV`  
 
 4. **Validação**  
-   - Cross-validation para melhor estimativa de performance  
-   - Métricas de avaliação: **MAE, MSE, RMSE, R² (Coeficiente de Determinação)**  
+   - Cross-validation  
+   - Métricas: **MAE, MSE, RMSE, R²**  
 
 5. **Salvar modelos**  
    - Modelos finais salvos em `models/` (`LIGHTGBM.pkl`, `Random_Forest.pkl`, `XGBOOST.pkl`)  
@@ -88,23 +91,24 @@ Previsao-seguro-saude/
 - Melhor modelo: **Random Forest (com escalonamento + encoding)**  
 - Principais métricas:
   - **R²**: 85.83%  
-  - **MAE**: 2415.70  
-  - **RMSE**: 4289.22  
-  - **Validação cruzada (R²)**: 85.35%  
+  - **MAE**: 2.415,70  
+  - **RMSE**: 4.289,22  
+  - Validação cruzada (R²): 85.35%  
 
 ---
-
-
 ## Como executar o projeto
 
-1. Clone este repositório:
+## Obs:Para rodar no google colab, carregue o notebook e o dataset e ajuste o caminho se necessário.
+
+## Utilizando o Jupyter (Opção 1)
+1. Clone o repositório:
 
 ```bash
 git clone https://github.com/Rd-Brito13/Previsao-de-custos-de-seguro-de-saude
 cd Previsao-de-custos-de-seguro-de-saude
 
-2. instale as dependências:
-pip install -r requirements.txt
 
-3. Execute o notebook
--Abra o notebook notebooks/Classificador.ipynb no Jupyter Notebook ou Google Colab
+2. Execute o script Setup.bat (ele fará tudo: criar o venv na pasta do projeto, instalar dependências e registrar o kernel no jupyter)
+
+3. Abra o notebok no jupyter e selecione o kernel criado:
+Kernel -> change kernel -> Phyton (projeto)
