@@ -112,3 +112,15 @@ cd Previsao-de-custos-de-seguro-de-saude
 
 3. Abra o notebok no jupyter e selecione o kernel criado:
 Kernel -> change kernel -> Phyton (projeto)
+
+```
+
+## 👨‍💻 Autor
+
+**Rodrigo Brito**  
+📧 [rd.brito13@gmail.com](mailto:rd.brito13@gmail.com)  
+💼 [LinkedIn](https://www.linkedin.com/in/rd-brito13)
+
+---
+
+⭐ **Se este projeto foi útil, não esqueça de deixar uma estrela no repositório!**
