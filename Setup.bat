@@ -1,31 +1,39 @@
 @echo off
-echo ==== Setup do Projeto ====
+title Setup - Projeto Seguro de Custo de Saude
+echo ============================================
+echo   CONFIGURANDO AMBIENTE DO PROJETO
+echo   Seguro de Custo de Saude
+echo ============================================
 
-REM Caminho do ambiente virtual
-set VENV_DIR=venv
+:: 1. Ativar suporte a long path (para evitar erro de OSError)
+echo Ativando suporte a long path no Windows...
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem" /v LongPathsEnabled /t REG_DWORD /d 1 /f >nul 2>&1
 
-REM 1. Checar se o venv existe
-if not exist %VENV_DIR% (
-    echo Ambiente virtual nao encontrado. Criando agora...
-    python -m venv %VENV_DIR%
-) else (
-    echo Ambiente virtual encontrado. Continuando setup...
+:: 2. Criar ambiente virtual (se nao existir)
+if not exist "venv" (
+    echo Criando ambiente virtual...
+    python -m venv venv
 )
 
-REM 2. Ativar o ambiente virtual
-echo ==== Ativando ambiente virtual ====
-call %VENV_DIR%\Scripts\activate
+:: 3. Ativar ambiente virtual
+echo Ativando ambiente virtual...
+call venv\Scripts\activate
 
-REM 3. Instalar dependencias
-echo ==== Instalando dependencias ====
-pip install --upgrade pip
-pip install -r requirements\requirements.txt
+:: 4. Atualizar pip
+echo Atualizando pip...
+python -m pip install --upgrade pip setuptools wheel
 
-REM 4. Instalar kernel no Jupyter
-echo ==== Instalando kernel no Jupyter ====
-pip install ipykernel
-python -m ipykernel install --user --name=projeto --display-name "Python (Projeto)"
+:: 5. Instalar dependencias do projeto
+echo Instalando dependencias do requirements.txt...
+pip install -r "requirements\requirements.txt"
 
-REM 5. Confirmar sucesso
-echo ==== Setup concluido com sucesso! 🚀 ====
+:: 6. Criar kernel Jupyter
+echo Registrando kernel do Jupyter...
+python -m ipykernel install --user --name=Custo_Seguro_env --display-name "Python (Custo Seguro)"
+
+echo ============================================
+echo   SETUP CONCLUIDO COM SUCESSO!
+echo   Kernel 'Python (Custo Seguro)' disponivel no Jupyter
+echo ============================================
+
 pause
