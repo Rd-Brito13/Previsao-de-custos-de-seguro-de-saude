@@ -1,0 +1,9 @@
+# Ambientes virtuais
+env/
+venv/
+.venv/
+
+# Jupyter & Cache
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+jupyter_cache/
