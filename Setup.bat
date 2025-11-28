@@ -29,7 +29,7 @@ pip install -r "requirements\requirements.txt"
 
 :: 6. Criar kernel Jupyter
 echo Registrando kernel do Jupyter...
-python -m ipykernel install --user --name=Custo_Seguro_env --display-name "Python (Custo Seguro)"
+python -m ipykernel install --user --name=Custo_Seguro_env --display-name "Python (Custo Seguro-)"
 
 echo ============================================
 echo   SETUP CONCLUIDO COM SUCESSO!
