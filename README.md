@@ -29,9 +29,9 @@ Previsao-seguro-saude/
 
 ├─ data/
 
-│ └─ raw/ 
+│ ├─ raw/ 
 
-│  └─ insurance.csv
+│ └─ insurance.csv
 
 ├─ models/ 
 
@@ -53,7 +53,7 @@ Previsao-seguro-saude/
 
 ├─ .gitignore
 
-└─ README.md <- Documentação do projeto
+│ └─ README.md <- Documentação do projeto
 
 
 
