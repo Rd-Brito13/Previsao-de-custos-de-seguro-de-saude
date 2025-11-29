@@ -112,11 +112,11 @@ Previsao-seguro-saude/
 Melhor modelo:
 - **Random Forest (com escalonamento + encoding + criação de variaveis dummy)**  
 Principais métricas:
-  - Melhor R² de teste entre todos os modelos  
-  - Menor RMSE geral 
-  - Resíduos com médio próximo de zero
-  - Boa estabilidade na validação cruzada
-  - Alta consistência na distribuição dos resíduos
+- Melhor R² de teste entre todos os modelos  
+- Menor RMSE geral 
+- Resíduos com médio próximo de zero
+- Boa estabilidade na validação cruzada
+- Alta consistência na distribuição dos resíduos
  Principais métricas (Random Forest)
 - R² (treino): 87.77%
 - R² (Teste): 85.93%
