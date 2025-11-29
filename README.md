@@ -34,18 +34,20 @@ Previsao-seguro-saude/
 │  └─ insurance.csv
 
 ├─ models/ 
-    ├─  LIGHTGBM.pkl
-    ├─  Random_Forest.pkl
-    └─  XGBOOST.pkl
+
+│ └─ LIGHTGBM.pkl
+    
+│ └─ Random_Forest.pkl
+    
+│ └─  XGBOOST.pkl
 
 ├─ notebooks/
 
 │ └─ Regressor.ipynb
 
-
 ├─ requirements/
 
-│ └─  requirements.txt
+│ └─ requirements.txt
 
 ├─ Setup.bat 
 
