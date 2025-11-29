@@ -31,9 +31,9 @@ Previsao-seguro-saude/
 
 │ ├─ raw/ 
 
-│ └─ insurance.csv
+│ └─ insurance.csv <- Base de dados utilizada.
 
-├─ models/ 
+├─ models/ <- Modelos treinados (LightGBM, Random Forest, XGBoost)
 
 │ └─ LIGHTGBM.pkl
     
@@ -41,17 +41,17 @@ Previsao-seguro-saude/
     
 │ └─  XGBOOST.pkl
 
-├─ notebooks/
+├─ notebooks/ 
 
-│ └─ Regressor.ipynb
+│ └─ Regressor.ipynb <- Notebook
 
 ├─ requirements/
 
-│ └─ requirements.txt
+│ └─ requirements.txt <- requirements do projeto (Utilizado pelo Setup.bat)
 
-├─ Setup.bat 
+├─ Setup.bat <- Configuração automática do ambiente
 
-├─ .gitignore
+├─ .gitignore <- Arquivos ignorados
 
 │ └─ README.md <- Documentação do projeto
 
