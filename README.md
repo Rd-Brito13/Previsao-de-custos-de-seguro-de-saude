@@ -1,20 +1,24 @@
 # Projeto: Previsão de Custos de Seguro de Saúde
+Modelagem, avaliaçãoo e comparação de algortimos de Machine Learning para regressão.
 
-Este projeto aplica **Machine Learning** para prever o custo de seguros de saúde com base em variáveis demográficas e comportamentais.  
-O dataset utilizado é público e está disponível no Kaggle: [Medical Cost Personal Datasets](https://www.kaggle.com/datasets/mirichoi0218/insurance)
+
+Este projeto aplica  técnicas avançadas de **Machine Learning** para prever o custo de seguros de saúde a partir de variáveis clínicas, demográficas e comportamentais.  
+O dataset é público e está disponível no kaggle:
+[Medical Cost Personal Datasets](https://www.kaggle.com/datasets/mirichoi0218/insurance)
 
 ---
 
-## Objetivo do projeto
+## Resumo do Projeto
 
-Desenvolver modelos preditivos capazes de estimar o valor do seguro de saúde a partir de informações como:
-
-- Idade  
-- Sexo  
-- Índice de Massa Corporal (IMC)  
-- Número de filhos  
-- Hábito de fumar  
-- Região de residência  
+- Análise exploratória completa (EDA)
+- Tratamento de dados e feature engineering
+- Pré-processamento com pipelines
+- Teste de múltiplos algoritmos de regressão
+- Otimização RandomSearchCV
+- Avaliação de diversas métricas (MAE, RMSE, R²)
+- Comparação geral + Ranking de modelos
+- Salvamento de modelos finanis em .pkl
+- Simulação de deploy com entrada de dados do usuário
 
 ---
 
@@ -25,19 +29,31 @@ Previsao-seguro-saude/
 
 ├─ data/
 
-│ └─ raw/ <- insurance.csv
+│ ├─ raw/ 
 
-├─ notebooks/
+│ └─ insurance.csv <- Base de dados utilizada.
 
-│ └─ Regressor.ipynb <- Análise, tratamento e modelagem
+├─ models/ <- Modelos treinados (LightGBM, Random Forest, XGBoost)
 
-├─ models/ <- LIGHTGBM.pkl, Random_Forest.pkl, XGBOOST.pkl
+│ └─ LIGHTGBM.pkl
+    
+│ └─ Random_Forest.pkl
+    
+│ └─  XGBOOST.pkl
 
-├─ requirements.txt <- Dependências do projeto
+├─ notebooks/ 
 
-├─ Setup.bat <- Script para criar venv, instalar dependências e kernel Jupyter
+│ └─ Regressor.ipynb <- Notebook
 
-└─ README.md <- Documentação do projeto
+├─ requirements/
+
+│ └─ requirements.txt <- requirements do projeto (Utilizado pelo Setup.bat)
+
+├─ Setup.bat <- Configuração automática do ambiente
+
+├─ .gitignore <- Arquivos ignorados
+
+│ └─ README.md <- Documentação do projeto
 
 
 
@@ -47,73 +63,103 @@ Previsao-seguro-saude/
 
 - **Fonte**: Kaggle - Medical Cost Personal Datasets  
 - **Número de instâncias**: 1.338  
-- **Número de features**: 7 (6 independentes + 1 target)  
+- **Número de features**: 7 (6 independentes)
+  - age,sex,bmi,children, smoker, region   
 - **Target**:  
-  - `charges` (valor do seguro de saúde)  
+  - `charges` (valor do seguro)  
 
 ---
 
 ## Pipeline do projeto
 
 1. **Importação dos dados**  
-   - Carregamento do dataset (`insurance.csv`)  
+   - Carregamento e inspeção inicial do arquivo insurance.csv
 
-2. **Exploração e tratamento dos dados**  
-   - Análise exploratória (distribuição, outliers, correlações, valores ausentes, gráficos)  
-   - Encoding de variáveis categóricas (`OneHotEncoder`, `OrdinalEncoder`)  
-   - Escalonamento de variáveis numéricas  
-   - Separação de treino e teste antes do pré-processamento  
+2. **Análise e tratamento**  
+   - Estatíscas gerais
+   - Identificação de outliers
+   - Estudo de correlações
+   - Tratamento e encoding das variáveis cetegóricas
+   - Escalonamento de variáveis numéricas
+   - Divisão entre treino e teste antes do pré-processamento 
 
 3. **Modelagem**  
-   - Modelos testados:
-     - Regressão Linear e Múltipla  
-     - SVR  
-     - Árvore de Decisão  
-     - Random Forest  
-     - XGBoost, LightGBM, CatBoost  
-     - Rede Neural (`MLPRegressor`)  
-   - Ajuste de hiperparâmetros com `GridSearchCV`  
+   - Regressão Linear e Múltipla
+   - SVR (Support vector regressor)
+   - Decision Tree
+   - Random Forest
+   - XGBoost
+   - LightGBM
+   - CatBoost
+   - MLPRegressor (rede neural)    
 
-4. **Validação**  
-   - Cross-validation  
-   - Métricas: **MAE, MSE, RMSE, R²**  
+4. **Avaliação**  
+   - MAE
+   - RMSE
+   - R²
+   - Validação cruzada (k-fold)
+   - Análise de resíduos e heterocedasticidade
+   - Comparação entre modelo via DataFrame Final
 
-5. **Salvar modelos**  
-   - Modelos finais salvos em `models/` (`LIGHTGBM.pkl`, `Random_Forest.pkl`, `XGBOOST.pkl`)  
+5. **Salvamento dos modelos finais**  
+   - Todos os pipeline completo (pré-processamento + modelo) usando joblib.dump()
 
 6. **Simulação de deploy**  
-   - Carregamento do modelo salvo e previsão de novos dados  
+   - Mini-sistema interativo para testar previsões com entrada manual do usuário 
 
 ---
 
 ## Resultados
 
-- Melhor modelo: **Random Forest (com escalonamento + encoding + criação de variaveis dummy)**  
-- Principais métricas:
-  - **R²**: 85.83%  
-  - **MAE**: 2.415,70  
-  - **RMSE**: 4.289,22  
-  - Validação cruzada (R²): 85.35%  
+Melhor modelo:
+- **Random Forest (com escalonamento + encoding + criação de variaveis dummy)**  
+Principais métricas:
+- Melhor R² de teste entre todos os modelos  
+- Menor RMSE geral 
+- Resíduos com médio próximo de zero
+- Boa estabilidade na validação cruzada
+- Alta consistência na distribuição dos resíduos
+ Principais métricas (Random Forest)
+- R² (treino): 87.77%
+- R² (Teste): 85.93%
+- MAE: 2.438,29
+- RMSE: 4.274,68
+- Validação cruzada (R²): 85.46%
+- Média dos resíduos: -52.56
 
 ---
 ## Como executar o projeto
 
-## Obs:Para rodar no google colab, carregue o notebook e o dataset e ajuste o caminho se necessário.
 
-## Utilizando o Jupyter (Opção 1)
+## Utilizando o Jupyter + ambiente virtual
 1. Clone o repositório:
 
 ```bash
 git clone https://github.com/Rd-Brito13/Previsao-de-custos-de-seguro-de-saude
 cd Previsao-de-custos-de-seguro-de-saude
-
-
-2. Execute o script Setup.bat (ele fará tudo: criar o venv na pasta do projeto, instalar dependências e registrar o kernel no jupyter)
-
-3. Abra o notebok no jupyter e selecione o kernel criado:
-Kernel -> change kernel -> Phyton (projeto)
-
 ```
+
+2. Execute o script de setup:
+ ```bash
+ Setup.bat
+ ```
+3. Abrir o Jupyter Notebook:
+```bash
+Kernel -> Change Kernel -> Projeto (Custo Seguro-)
+```
+
+Tecnologias utilzadas
+- Python
+- Numpy
+- Pandas
+- Scikit-learn
+- XGBoost
+- LightGBM
+- CatBoost
+- Maatplotlib / Seaborn / Plotly
+- Joblib
+- Jupyter Notebook
+
 
 ## 👨‍💻 Autor
 
